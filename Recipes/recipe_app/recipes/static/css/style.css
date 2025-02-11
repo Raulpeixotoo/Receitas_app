@@ -1,0 +1,461 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #e7e9ea;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Cabeçalho */
+.site-header {
+    background-color: #1e1e1e; 
+    padding: 8px 15px; 
+    border-bottom: 1px solid #333;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    font-size: 18px; 
+    font-weight: bold;
+    color: #1da1f2; 
+    text-decoration: none;
+}
+
+.nav-links a {
+    color: #1da1f2;
+    text-decoration: none;
+    margin-right: 8px;
+    font-size: 12px; 
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+.logout-button {
+    background-color: transparent;
+    border: 1px solid #1da1f2;
+    color: #1da1f2;
+    padding: 4px 8px; 
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 10px; 
+}
+
+.logout-button:hover {
+    background-color: #1da1f2;
+    color: white;
+}
+
+/* Conteúdo Principal */
+.content {
+    max-width: 600px; 
+    margin: 15px auto; 
+    padding: 15px;
+    background-color: #1e1e1e; 
+    border-radius: 18px; 
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3); 
+}
+
+/* Feed de Receitas */
+.recipe-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+}
+
+.recipe-card {
+    background-color: #1e1e1e; 
+    border-radius: 108px; 
+    padding: 8px; 
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); 
+}
+
+.author-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px; 
+}
+
+.profile-picture-small {
+    width: 25px; 
+    height: 25px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 8px; 
+}
+
+.default-profile-picture-small {
+    width: 25px;
+    height: 25px;
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 12px; 
+    color: #666;
+}
+
+.author-name {
+    color: #1da1f2; 
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.author-name:hover {
+    text-decoration: underline;
+}
+
+.recipe-image-container {
+    position: relative;
+    width: 100%;
+    height: 200px; 
+    overflow: hidden;
+    border-radius: 8px; 
+    margin-top: 8px; 
+}
+
+.recipe-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.recipe-image-container:hover .recipe-image {
+    transform: scale(1.1); 
+}
+
+.recipe-hover {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px;
+    text-align: center;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.3s ease; 
+}
+
+.recipe-image-container:hover .recipe-hover {
+    opacity: 1;
+}
+
+.like-form {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+}
+
+.like-button {
+    background-color: transparent;
+    border: none;
+    color: #1da1f2;
+    font-size: 12px; 
+    cursor: pointer;
+}
+
+
+
+/* ------------------------------------------------------------------------ */
+/* footer */
+.site-footer {
+    background-color: #1e1e1e;
+    padding: 15px;
+    text-align: center;
+    border-top: 1px solid #333;
+    color: #b3b3b3;
+    font-size: 14px;
+}
+
+
+/* ------------------------------------------------------------------------ */
+/* Formulários */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+form label {
+    font-size: 16px;
+    color: #e7e9ea;
+}
+
+form input,
+form textarea,
+form button {
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #1e1e1e;
+    color: #e7e9ea;
+    font-size: 16px;
+}
+
+form button {
+    background-color: #aeaeae;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+form button:hover {
+    background-color: #aeaeae;
+}
+
+
+
+
+/* -----------------------------------------------------------------------------*/
+/* Página de Detalhes da Receita */
+.recipe-detail-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+
+.recipe-image-container {
+    position: relative;
+    width: 100%;
+    height: 400px; 
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 20px; /* Espaçamento entre a imagem e as informações */
+}
+
+
+
+
+.no-image {
+    width: 100%;
+    height: 400px; 
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #666;
+}
+
+
+.profile-picture-small {
+    width: 40px; 
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+.default-profile-picture-small {
+    width: 40px;
+    height: 40px;
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 16px;
+    color: #666;
+}
+
+.author-info p {
+    margin: 0;
+    font-size: 14px;
+    color: #1da1f2;
+}
+
+.author-info a {
+    color: #1da1f2;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.author-info a:hover {
+    text-decoration: underline;
+}
+
+.recipe-details {
+    text-align: left; /* Alinha os detalhes à esquerda */
+    margin-top: 20px;
+}
+.recipe-details title {
+    text-align: center; /* Alinha os detalhes à esquerda */
+    margin-top: 20px;
+}
+
+.recipe-details p {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #b3b3b3;
+}
+
+.like-form {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+}
+
+.like-button {
+    background-color: transparent;
+    border: none;
+    color: #aeaeae;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.like-button:hover {
+    color: black;
+}
+
+/* ------------------------------------------------------------------------ */
+/* Cabeçalho do Perfil */
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 20px;
+    background-color: #333;
+}
+
+.profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.default-profile-picture {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    color: #666;
+}
+
+.profile-info {
+    flex-grow: 1;
+}
+
+.profile-info h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #e7e9ea;
+}
+
+.profile-info p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #b3b3b3;
+}
+
+.follow-stats {
+    margin-top: 10px;
+}
+
+.follow-stats span {
+    margin-right: 20px;
+    font-size: 14px;
+    color: #b3b3b3;
+}
+
+.follow-link {
+    text-decoration: none;
+    color: #aeaeae; 
+}
+
+.follow-link:hover {
+    text-decoration: underline;
+}
+
+.follow-button {
+    background-color: #1da1f2; 
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.follow-button:hover {
+    background-color: #1a91da; 
+}
+
+/* Grid de Receitas */
+.recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.recipe-card {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: #333; /* Fundo escuro para cards sem imagem */
+}
+
+.recipe-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.no-image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #666;
+}
+
+.recipe-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px;
+    text-align: center;
+    font-size: 14px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}

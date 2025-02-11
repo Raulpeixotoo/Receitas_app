@@ -1,0 +1,24 @@
+{% extends 'recipes/base.html' %}
+
+{% block content %}
+<h2>Criar Nova Receita</h2>
+<form method="post" enctype="multipart/form-data"> <!-- Adicione enctype="multipart/form-data" -->
+    {% csrf_token %}
+    <label for="title">Título:</label>
+    <input type="text" name="title" id="title" required><br>
+
+    <label for="description">Descrição:</label>
+    <textarea name="description" id="description" required></textarea><br>
+
+    <label for="ingredients">Ingredientes:</label>
+    <textarea name="ingredients" id="ingredients" required></textarea><br>
+
+    <label for="instructions">Instruções:</label>
+    <textarea name="instructions" id="instructions" required></textarea><br>
+
+    <label for="image">Imagem da Receita:</label>
+    <input type="file" name="image" id="image"><br> <!-- Campo de upload de imagem -->
+
+    <button type="submit">Criar Receita</button>
+</form>
+{% endblock %}

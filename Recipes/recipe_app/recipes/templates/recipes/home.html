@@ -1,0 +1,55 @@
+{% extends 'recipes/base.html' %}
+
+{% block content %}
+<h1>Feed de Receitas</h1>
+
+{% if user.is_authenticated %}
+    <p>Bem-vindo, {{ user.username }}!</p>
+    
+{% else %}
+    <p>Você não está logado. <a href="{% url 'login' %}">Faça login</a> ou <a href="{% url 'register' %}">registre-se</a>.</p>
+{% endif %}
+
+<!-- Feed de Receitas -->
+<div class="recipe-feed">
+    {% for recipe in recipes %}
+        <div class="recipe-card">
+            <!-- Informações do Autor -->
+            <div class="author-info">
+                {% if recipe.author.profile.profile_picture %}
+                    <img src="{{ recipe.author.profile.profile_picture.url }}" alt="Foto de Perfil" class="profile-picture-small">
+                {% else %}
+                    <div class="default-profile-picture-small">📷</div>
+                {% endif %}
+                <a href="{% url 'profile' recipe.author.username %}" class="author-name">{{ recipe.author.username }}</a>
+            </div>
+
+            <!-- Imagem da Receita com Hover -->
+            <a href="{% url 'recipe_detail' recipe.pk %}" class="recipe-image-container">
+                {% if recipe.image %}
+                    <img src="{{ recipe.image.url }}" alt="Imagem da Receita" class="recipe-image">
+                {% else %}
+                    <div class="no-image">Sem Imagem</div>
+                {% endif %}
+                <div class="recipe-hover">
+                    <span>{{ recipe.title }}</span>
+                </div>
+            </a>
+
+            <!-- Botão de Curtir -->
+            <form method="post" action="{% url 'like_recipe' recipe.pk %}" class="like-form">
+                {% csrf_token %}
+                <button type="submit" class="like-button">
+                    {% if user in recipe.likes.all %}
+                        ❤️ {{ recipe.total_likes }}
+                    {% else %}
+                        ♡ {{ recipe.total_likes }}
+                    {% endif %}
+                </button>
+            </form>
+        </div>
+    {% empty %}
+        <p>Nenhuma receita disponível no momento.</p>
+    {% endfor %}
+</div>
+{% endblock %}

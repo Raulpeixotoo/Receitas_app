@@ -1,0 +1,16 @@
+{% extends 'recipes/base.html' %}
+
+{% block content %}
+<h2>Registrar</h2>
+<form method="post">
+    {% csrf_token %}
+    <label for="username">Nome de Usuário:</label>
+    <input type="text" name="username" id="username" required>
+    <label for="password1">Senha:</label>
+    <input type="password" name="password1" id="password1" required>
+    <label for="password2">Confirme a Senha:</label>
+    <input type="password" name="password2" id="password2" required>
+    <button type="submit">Registrar</button>
+</form>
+<p>Já tem uma conta? <a href="{% url 'login' %}">Faça login aqui</a>.</p>
+{% endblock %}

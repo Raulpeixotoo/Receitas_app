@@ -1,0 +1,47 @@
+{% extends 'recipes/base.html' %}
+
+{% block content %}
+<div class="recipe-detail-container">
+    <!-- Nome da Receita -->
+    <h1 class="title">{{ recipe.title }}</h1>
+
+    <!-- Imagem da Receita -->
+    <div class="recipe-image-container">
+        {% if recipe.image %}
+            <img src="{{ recipe.image.url }}" alt="Imagem da Receita" class="recipe-image">
+        {% else %}
+            <div class="no-image">Sem Imagem</div>
+        {% endif %} <!-- Certifique-se de fechar o if aqui -->
+    </div>
+
+    <!-- Informações do Autor -->
+    <div class="author-info">
+        {% if recipe.author.profile.profile_picture %}
+            <img src="{{ recipe.author.profile.profile_picture.url }}" alt="Foto de Perfil" class="profile-picture-small">
+        {% else %}
+            <div class="default-profile-picture-small">📷</div>
+        {% endif %} <!-- Certifique-se de fechar o if aqui -->
+        <p><a href="{% url 'profile' recipe.author.username %}">{{ recipe.author.username }}</a></p>
+    </div>
+
+    <!-- Detalhes da Receita -->
+    <div class="recipe-details">
+        <p><strong>Autor:</strong>{{ recipe.title }}</p>
+        <p>Descrição: {{ recipe.description }}</p>
+        <p>Ingredientes: {{ recipe.ingredients }}</p>
+        <p>Modo de Preparo: {{ recipe.instructions }}</p>
+
+        <!-- Botão de Curtir -->
+        <form method="post" action="{% url 'like_recipe' recipe.pk %}" class="like-form">
+            {% csrf_token %}
+            <button type="submit" class="like-button">
+                {% if user in recipe.likes.all %}
+                    ❤️ {{ recipe.total_likes }}
+                {% else %}
+                    ♡ {{ recipe.total_likes }}
+                {% endif %} <!-- Certifique-se de fechar o if aqui -->
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'recipes/base.html' %}
+
+{% block content %}
+<div class="profile-container">
+    <!-- Seção do Cabeçalho do Perfil -->
+    <div class="profile-header">
+        <!-- Foto de Perfil -->
+        <div class="profile-picture">
+            {% if profile.profile_picture %}
+                <img src="{{ profile.profile_picture.url }}" alt="Foto de Perfil" class="rounded-image">
+            {% else %}
+                <div class="default-profile-picture">📷</div>
+            {% endif %}
+        </div>
+
+        <!-- Informações do Perfil -->
+        <div class="profile-info">
+            <h1>{{ profile.user.username }}</h1>
+            <p><strong>Bio:</strong> {{ profile.bio }}</p>
+
+            <!-- Seguidores e Seguindo -->
+            <div class="follow-stats">
+                <span>
+                    <strong>{{ followers_count }}</strong> seguidores
+                </span>
+                <span>
+                    <strong>{{ following_count }}</strong> seguindo
+                </span>
+            </div>
+
+            <!-- Botão de Seguir/Deixar de Seguir -->
+            {% if user.is_authenticated and user != profile.user %}
+                <form method="post" action="{% url 'follow_user' profile.user.username %}">
+                    {% csrf_token %}
+                    {% if is_following %}
+                        <button type="submit" class="follow-button">Deixar de Seguir</button>
+                    {% else %}
+                        <button type="submit" class="follow-button">Seguir</button>
+                    {% endif %}
+                </form>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Receitas Criadas -->
+    <h2>Receitas Criadas</h2>
+    <div class="recipe-grid">
+        {% for recipe in recipes %}
+            <div class="recipe-card">
+                <a href="{% url 'recipe_detail' recipe.pk %}">
+                    {% if recipe.image %}
+                        <img src="{{ recipe.image.url }}" alt="Imagem da Receita" class="recipe-image">
+                    {% else %}
+                        <div class="no-image">Sem Imagem</div>
+                    {% endif %}
+                    <div class="recipe-title">{{ recipe.title }}</div>
+                </a>
+            </div>
+        {% empty %}
+            <p>Nenhuma receita disponível.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
