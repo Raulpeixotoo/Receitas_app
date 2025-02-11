@@ -8,6 +8,7 @@
         <div class="profile-picture">
             {% if profile.profile_picture %}
                 <img src="{{ profile.profile_picture.url }}" alt="Foto de Perfil" class="rounded-image">
+            
             {% else %}
                 <div class="default-profile-picture">📷</div>
             {% endif %}
@@ -17,6 +18,7 @@
         <div class="profile-info">
             <h1>{{ profile.user.username }}</h1>
             <p><strong>Bio:</strong> {{ profile.bio }}</p>
+            <a href="{% url 'edit_profile' %}">Editar</a>
 
             <!-- Seguidores e Seguindo -->
             <div class="follow-stats">
